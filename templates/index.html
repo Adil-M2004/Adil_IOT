@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Motors Dealership</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .available { color: green; font-weight: bold; }
+        .sold { color: red; text-decoration: line-through; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>City Motors Inventory</h1>
+        <p>Welcome to our dealership. Browse our current stock below:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    | Year | Make | Model | Price | Status |
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.make }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>${{ "{:,}".format(car.price) }}</td>
+                    <td class="{{ car.status.lower() }}">{{ car.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
