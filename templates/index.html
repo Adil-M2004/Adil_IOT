@@ -1,52 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Car Dealership Admin</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .form-section { background: #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-        .btn-delete { color: white; background: red; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-    <h1>Inventory Management</h1>
-
-    <div class="form-section">
-        <h3>Add New Car</h3>
-        <form action="/add" method="POST">
-            <input type="number" name="year" placeholder="Year" required>
-            <input type="text" name="make" placeholder="Make" required>
-            <input type="text" name="model" placeholder="Model" required>
-            <input type="number" name="price" placeholder="Price" required>
-            <button type="submit">Add Car</button>
-        </form>
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>This is now powered by a separate HTML and CSS file!</p>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Year</th><th>Make</th><th>Model</th><th>Price</th><th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for car in cars %}
-            <tr>
-                <td>{{ car.year }}</td>
-                <td>{{ car.make }}</td>
-                <td>{{ car.model }}</td>
-                <td>${{ car.price }}</td>
-                <td>
-                    <form action="{{ url_for('delete_car', car_id=car.id) }}" method="POST">
-                        <button type="submit" class="btn-delete">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
 </body>
 </html>
